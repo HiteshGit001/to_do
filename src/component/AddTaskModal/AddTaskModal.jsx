@@ -28,10 +28,10 @@ const AddTaskModal = ({ isOpen, onClose }) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   }
-  const handleSubTask = (event) => {
-    const {name, value} = event.target;
-    // setFormData({...formData.subTask, [name]:value});
-  }
+  // const handleSubTask = (event) => {
+  //   const {name, value} = event.target;
+  //   setFormData({...formData.subTask, [name]:value});
+  // }
   const handleSubmit = (event) => {
     event.preventDefault();
     setTaskListToday((ps) => [...ps, formData]);
@@ -46,8 +46,8 @@ const AddTaskModal = ({ isOpen, onClose }) => {
           <ModalBody>
             <label>Main Task</label>
             <Input onChange={handleChange} type="text" name="mainTask" placeholder="Main Task" />
-            <label>Main Task</label>
-            <Input onChange={handleSubTask} type="text" name="subTask" placeholder="Sub Task" />
+            {/* <label>Main Task</label>
+            <Input onChange={handleSubTask} type="text" name="subTask" placeholder="Sub Task" /> */}
           </ModalBody>
           <ModalFooter>
             <Button type="submit" colorScheme="green" size="sm">ADD +</Button>
