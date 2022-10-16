@@ -2,6 +2,7 @@ import { Search2Icon } from '@chakra-ui/icons';
 import { Icon, Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import React from 'react'
 import wave from "../assets/icon/wave.svg";
+import TaskCard from '../component/TaskCard/TaskCard';
 import { useData } from '../context/DataContext';
 import "../styles/pages.css";
 
@@ -24,6 +25,7 @@ const Home = () => {
         </InputGroup>
         <img src={wave} alt="wave icon" />
       </div>
+      <TaskCard />
     </div>
   );
 };

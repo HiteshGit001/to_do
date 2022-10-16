@@ -1,0 +1,15 @@
+.task_flex_box{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+.task_card{
+  border-radius: 0.5rem;
+  border: 1px solid blue;
+  width: 5rem;
+  height: 5rem;
+  text-align: center;
+
+}
