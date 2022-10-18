@@ -7,14 +7,14 @@ import { useData } from '../context/DataContext';
 import "../styles/pages.css";
 
 const Home = () => {
-  const { todaysNumber } = useData();
+  const { todaysNumber, taskListToday } = useData();
   const date = new Date().toJSON().slice(0, 10);
   console.log(date)
   return (
     <div>
       <div className="banner_box">
         <p className="title">My todo List</p>
-        <p className="subititle">You have <span className="today_task">{todaysNumber} tasks</span> today!</p>
+        <p className="subititle">You have <span className="today_task">{taskListToday.length} tasks</span> today!</p>
         <p>{date}</p>
         <InputGroup style={{ justifyContent: "center" }}>
           <InputLeftElement

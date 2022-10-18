@@ -14,7 +14,7 @@ import {
 import { useData } from '../../context/DataContext';
 
 const AddTaskModal = ({ isOpen, onClose }) => {
-  const { setTaskListToday, taskListToday } = useData();
+  const { setTaskListToday, taskListToday, countSubData, setSubDataCount, } = useData();
   const [formData, setFormData] = useState(
     {
       mainTask: "",
@@ -33,6 +33,19 @@ const AddTaskModal = ({ isOpen, onClose }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setTaskListToday((ps) => [...ps, formData]);
+    setFormData({
+      mainTask: "",
+      subTask: [
+        {
+          taskName: "",
+        }
+      ],
+      mainTaskStatus: false,
+    })
+  }
+  const addSubTask = () => {
+    formData.subTask.push({ taskName: "" });
+    console.log(formData.subTask, 'd');
   }
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -44,8 +57,17 @@ const AddTaskModal = ({ isOpen, onClose }) => {
           <ModalBody>
             <label>Main Task</label>
             <Input onChange={handleChange} type="text" name="mainTask" placeholder="Main Task" />
-            <label>Main Task</label>
-            <Input onChange={handleChange} type="text" name="subTask" placeholder="Sub Task" />
+            {formData.subTask.map((ele, id) => {
+              return (
+                <>
+                  <label>Sub Task</label>
+                  <Input onChange={handleChange} type="text" name="subTask" placeholder="Sub Task" />
+                </>
+              )
+            })}
+            <div>
+              <Button onClick={addSubTask} color="blue">Add Sub Task</Button>
+            </div>
             <label>Task Status</label>
             <Select>
               <option name="mainTaskStatus" value={true}>Completed</option>
