@@ -14,6 +14,7 @@ import {
 import { useData } from '../../context/DataContext';
 
 const AddTaskModal = ({ isOpen, onClose }) => {
+  const [id, setId] = useState();
   const { setTaskListToday, taskListToday, countSubData, setSubDataCount, } = useData();
   const [formData, setFormData] = useState(
     {
@@ -43,8 +44,11 @@ const AddTaskModal = ({ isOpen, onClose }) => {
       mainTaskStatus: false,
     })
   }
-  const addSubTask = () => {
-    formData.subTask.push({ taskName: "" });
+  const addSubTask = (event) => {
+    setId(id + 1);
+    const { name } = event.target;
+    // formData.subTask.push({ taskName: "" });
+    // setFormData((ps) => [...ps.subTask, [{ id: id, taskName: "" }]]);
     console.log(formData.subTask, 'd');
   }
   return (
@@ -57,7 +61,7 @@ const AddTaskModal = ({ isOpen, onClose }) => {
           <ModalBody>
             <label>Main Task</label>
             <Input onChange={handleChange} type="text" name="mainTask" placeholder="Main Task" />
-            {formData.subTask.map((ele, id) => {
+            {formData?.subTask?.map((ele, id) => {
               return (
                 <>
                   <label>Sub Task</label>
@@ -75,7 +79,7 @@ const AddTaskModal = ({ isOpen, onClose }) => {
             </Select>
           </ModalBody>
           <ModalFooter>
-            <Button type="submit" colorScheme="green" size="sm">ADD +</Button>
+            {/* <Button type="submit" name="subTask" colorScheme="green" size="sm">ADD +</Button> */}
           </ModalFooter>
         </form>
       </ModalContent>
